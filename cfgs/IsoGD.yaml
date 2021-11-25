@@ -1,0 +1,38 @@
+#############################################################
+# 1. Model Define Configs
+#############################################################
+ModelConfig:
+  model_name: "XceptionTime"
+  model_arch: 
+    XceptionTime: "./cfgs/XceptionTime_db1.yaml"
+    XceptionTime2d: "./cfgs/XceptionTime2d_db1.yaml"
+
+#############################################################
+# 2. Optimizer & Train Configs
+#############################################################
+OptimizerConfig:
+  epoches: 50
+  lr: 0.001
+  loss: 'CrossEntropyLoss'
+  use_unbalance_weight: False
+
+#############################################################
+# 3. DataSet Config
+#############################################################  
+DatasetConfig:
+  dataset: 'IsoGD'
+  modality: 'rgb'
+  batch_size: 32
+  num_workers: 4
+  dataset_root: "./data/IsoGD"
+  sample_duration: 16
+  resize_shape: [320, 240]
+  crop_size: 224
+  flip_rate: 0.5
+
+#############################################################
+# 4. Output Config
+#############################################################  
+OutputConfig:
+  path_weights: './outputs/weights/'
+  path_results: './outputs/results/'

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Neural Architecture Search for hand gesture recognition
 This repository is a pytorch code reproduction for the TIP paper [**"Searching Multi-Rate and Multi-Modal Temporal Enhanced Networks for Gesture Recognition"**](https://arxiv.org/pdf/2008.09412.pdf)
 
@@ -14,8 +15,4 @@ The code is developed using python 3.7 on Ubuntu 18.04. NVIDIA GPU is needed.
   year={2021}
 }
 ```
-
-
-
-
 
