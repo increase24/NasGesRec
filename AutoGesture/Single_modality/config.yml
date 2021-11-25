@@ -1,16 +1,16 @@
 common:
-  data_dir_root: /Dataset/IsoGD
-  dataset_splits: /CodeDir/AcmW_Code/dataset_splits
+  data_dir_root: ./data/IsoGD_phase1_jpgs
+  dataset_splits: ./data/IsoGD_phase1_jpgs
 
-  init_model: ../checkpoints/epoch22-M-valid_0.5888-test_0.6289.pth
+  init_model: ./checkpoints/epoch22-M-valid_0.5888-test_0.6289.pth
 #  init_model: ../checkpoints/epoch24-K-valid_0.5568-test_0.6085.pth
 
 
 #-------basic parameter----------
   visname: AutoGesture_AUG_Iso
   num_classes: 249
-  batch_size: 24
-  testing_batch_size: 256
+  batch_size: 8 # 24
+  testing_batch_size: 32 # 256
   num_workers: 4
   learning_rate: 0.01
   momentum: 0.9

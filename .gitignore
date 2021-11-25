@@ -1,0 +1,24 @@
+__pycache__
+*.pyc
+
+# outputs: logs, trained models
+outputs/
+
+# dataset
+data
+*.tar
+
+# output files
+*.out
+
+#ckpt
+checkpoints
+
+# notebook
+# notebooks
+eda
+# *.ipynb
+
+# vscode
+#.vscode
+

@@ -36,6 +36,7 @@ class Videodatasets(Dataset):
 
         lines= filter(lambda x: x[1] > 8, get_data_list_and_label(ground_truth, typ))
         self.inputs = list(lines)
+        
     def transform_params(self, resize=(320, 240), crop_size=224, flip=0.5):
         if self.phase == 'train':
             left, top = random.randint(0, resize[0] - crop_size), random.randint(0, resize[1] - crop_size)
@@ -97,7 +98,7 @@ class Videodatasets(Dataset):
             return torch.cat(frams, dim=3).type(torch.FloatTensor)
         data_path = os.path.join(self.dataset_root, self.inputs[index][0])
         clip = Sample_Image(data_path, self.inputs[index][1])
-        return clip.permute(0, 3, 1, 2), self.inputs[index][2]
+        return clip.permute(0, 3, 1, 2), self.inputs[index][2] - 1
 
     def __len__(self):
         return len(self.inputs)

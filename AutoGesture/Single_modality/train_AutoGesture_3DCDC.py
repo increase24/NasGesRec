@@ -109,14 +109,14 @@ def GetData(args):
         modality = 'flow'
     else:
         raise Exception('Error in load data modality!')
-    train_dataset = Videodatasets(args.data_dir_root + '/{0}/train'.format(modality),
-                                                  args.dataset_splits + '/{0}_train_lst.txt'.format(modality), modality,
+    train_dataset = Videodatasets(args.data_dir_root + '/train',
+                                                  args.dataset_splits + '/rgb_train_list.txt', modality,
                                                   args.sample_duration, phase='train')
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers,
                                   pin_memory=True)
 
-    valid_dataset = Videodatasets(args.data_dir_root + '/{0}/valid'.format(modality),
-                                                  args.dataset_splits + '/{0}_valid_lst.txt'.format(modality), modality,
+    valid_dataset = Videodatasets(args.data_dir_root + '/valid',
+                                                  args.dataset_splits + '/rgb_valid_list.txt', modality,
                                                   args.sample_duration, phase='valid')
     valid_dataloader = DataLoader(valid_dataset, batch_size=args.testing_batch_size, shuffle=False, num_workers=args.num_workers,
                                   pin_memory=True)
