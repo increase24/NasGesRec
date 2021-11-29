@@ -71,8 +71,8 @@ class IsoGD(Dataset):
                 ) for i in range(sn)]
         sl = f(frame_count)
         frames = []
-        for _path in frame_paths:
-            img = self.__preprocessing(Image.open(_path), resize_shape, crop_rect, is_flip)
+        for idx in sl:
+            img = self.__preprocessing(Image.open(frame_paths[idx]), resize_shape, crop_rect, is_flip) # RGB
             frames.append(self.transform(img).view(3, 112, 112, 1))
         return torch.cat(frames, dim=3).float()
 
@@ -96,10 +96,23 @@ class IsoGD(Dataset):
 
 if __name__ == "__main__":
     from yacs.config import CfgNode as CN
+    import matplotlib.pyplot as plt
     with open('./cfgs/IsoGD.yaml') as cfg_file:
         cfg = CN.load_cfg(cfg_file)
         print('Successfully loading the config file....')
     DataConfig = cfg.DatasetConfig
     trainset = IsoGD(DataConfig, 'train')
     sample = trainset[0]
-    print(sample[0].shape, sample[1])
+    print('image sequence sample: ', sample[0].shape, '\ngesture label:', sample[1])
+    frame_num = cfg.DatasetConfig.sample_duration
+    plt.figure(figsize=(24,8))
+    for idx in range(frame_num):
+        image = sample[0][:,idx,:,:]
+        image = (image * 128 + 127.5)/255 # convert [-1, 1] to [0, 1]
+        image = image.permute(1,2,0).numpy()
+        #image = image[:,:,::-1] # no need for 'Image.open'
+        plt.subplot(frame_num//8, 8, idx+1)
+        plt.imshow(image)
+    plt.suptitle('IsoGD gesture video sample')
+    plt.show()
+

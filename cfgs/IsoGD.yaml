@@ -25,7 +25,7 @@ DatasetConfig:
   batch_size: 32
   num_workers: 4
   dataset_root: "./data/IsoGD"
-  sample_duration: 16
+  sample_duration: 16 # frame number
   resize_shape: [320, 240]
   crop_size: 224
   flip_rate: 0.5
