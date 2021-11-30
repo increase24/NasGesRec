@@ -25,6 +25,14 @@
             "program": "${workspaceFolder}/datasets/IsoGD.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
+        },
+        {
+            "name": "test network NAgeStureNet",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/networks/NAgeStureNet.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
         }
     ]
 }

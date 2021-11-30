@@ -105,7 +105,7 @@ if __name__ == "__main__":
     sample = trainset[0]
     print('image sequence sample: ', sample[0].shape, '\ngesture label:', sample[1])
     frame_num = cfg.DatasetConfig.sample_duration
-    plt.figure(figsize=(24,8))
+    plt.figure(figsize=(24,frame_num//4))
     for idx in range(frame_num):
         image = sample[0][:,idx,:,:]
         image = (image * 128 + 127.5)/255 # convert [-1, 1] to [0, 1]
